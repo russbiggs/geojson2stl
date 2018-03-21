@@ -1,0 +1,49 @@
+{
+  "name": "geojson2stl",
+  "version": "0.1.0",
+  "description": "Convert a GeoJSON to STL.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src -d build",
+    "pretest": "npm run build",
+    "posttest": "rm -rf build",
+    "test": "tape 'tests/**/*-test.js'",
+    "prepublish": "npm run build"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "keywords": [
+    "geojson",
+    "STL",
+    "3D Printing"
+  ],
+  "author": {
+    "name": "Russ Biggs",
+    "url": "https://russbiggs.com"
+  },
+  "homepage": "https://github.com/russbiggs/geojson2stl",
+  "license": "ISC",
+  "bin": {
+    "geojson2stl": "build/geojson2stl.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/russbiggs/geojson2stl.git"
+  },
+  "dependencies": {
+    "@turf/bbox": "^6.0.0",
+    "@turf/centroid": "^6.0.0",
+    "@turf/projection": "^6.0.0",
+    "colors": "^1.2.1",
+    "commander": "^2.15.0",
+    "earcut": "^2.1.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "tape": "^4.9.0"
+  }
+}

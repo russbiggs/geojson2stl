@@ -1,0 +1,85 @@
+solid test
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 40 0
+            vertex 39.9979691656471 40 10
+            vertex 39.9979691656471 -59.99999999999999 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 40 0
+            vertex 39.9979691656471 -59.99999999999999 0
+            vertex 39.9979691656471 -59.99999999999999 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 -59.99999999999999 0
+            vertex 39.9979691656471 -59.99999999999999 10
+            vertex -59.99695374847065 -59.99999999999999 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 -59.99999999999999 0
+            vertex -59.99695374847065 -59.99999999999999 0
+            vertex -59.99695374847065 -59.99999999999999 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 -59.99999999999999 0
+            vertex -59.99695374847065 -59.99999999999999 10
+            vertex -59.99695374847065 40 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 -59.99999999999999 0
+            vertex -59.99695374847065 40 0
+            vertex -59.99695374847065 40 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 40 0
+            vertex -59.99695374847065 40 10
+            vertex 39.9979691656471 40 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 40 0
+            vertex 39.9979691656471 40 0
+            vertex 39.9979691656471 40 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 -59.99999999999999 10
+            vertex 39.9979691656471 40 10
+            vertex -59.99695374847065 40 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 40 10
+            vertex -59.99695374847065 -59.99999999999999 10
+            vertex 39.9979691656471 -59.99999999999999 10
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex 39.9979691656471 -59.99999999999999 0
+            vertex 39.9979691656471 40 0
+            vertex -59.99695374847065 40 0
+        endloop
+    endfacet
+facet normal 1.0 1.0 1.0 
+        outer loop
+            vertex -59.99695374847065 40 0
+            vertex -59.99695374847065 -59.99999999999999 0
+            vertex 39.9979691656471 -59.99999999999999 0
+        endloop
+    endfacet
