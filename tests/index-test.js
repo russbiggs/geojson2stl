@@ -1,5 +1,5 @@
 const fs = require('fs');
-const geojson2stl = require('../build/');
+const geojson2stl = require('../');
 const test = require('tape');
 
 const options = {

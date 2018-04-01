@@ -4,7 +4,7 @@ const projection = require('@turf/projection');
 const earcut = require('earcut');
 const path = require('path');
 
-module.exports = ( geojson, options )=>{
+module.exports = (geojson, options) => {
     let output = './output.stl';
     if (options && options.output != null) output = options.output;
     let extrude = 1;
@@ -17,12 +17,12 @@ module.exports = ( geojson, options )=>{
     for (let i = 0; i < scaled.features.length; i++) {
         let feature = scaled.features[i].geometry.coordinates[0];
         facets += convertFeature(feature, extrude, size);
-    } 
+    }
     let filename = path.parse(output).base.split('.')[0];
     return combineStl(filename, facets);
 };
 
-const convertFeature = ( feature, extrusion, size )=>{
+const convertFeature = (feature, extrusion, size) => {
     let stl = '';
     let bottom = [];
     let top = [];
@@ -35,7 +35,7 @@ const convertFeature = ( feature, extrusion, size )=>{
         let line = [feature[i], feature[i + 1]];
         if (i + 1 != feature.length) {
             lines.push(line);
-        } 
+        }
     }
     for (let i = 0; i < lines.length; i++) {
         let facet = createFace(lines[i], extrusion);
@@ -46,7 +46,7 @@ const convertFeature = ( feature, extrusion, size )=>{
     return stl;
 }
 
-const triangulate = ( face )=>{
+const triangulate = (face) => {
     let flat = earcut.flatten(face);
     let tris = earcut(flat.vertices, flat.holes, flat.dimensions);
     let arrays = [];
@@ -62,7 +62,7 @@ const triangulate = ( face )=>{
     return triangles;
 }
 
-const scaleFeatures= ( feature, size )=> {
+const scaleFeatures = (feature, size) => {
     let featureCentroid = centroid(feature).geometry.coordinates;
     let dims = bbox(feature);
     let xDiff = dims[2] - dims[0];
@@ -70,20 +70,20 @@ const scaleFeatures= ( feature, size )=> {
     let xDim, yDim;
     if (xDiff > yDiff) {
         xDim = size;
-        yDim = size * yDiff/xDiff;
-    } else if (yDiff > xDiff)  {
-        xDim = size * xDiff/yDiff;
+        yDim = size * yDiff / xDiff;
+    } else if (yDiff > xDiff) {
+        xDim = size * xDiff / yDiff;
         yDim = size;
     } else {
         xDim = size;
         yDim = size;
     }
-    let xSize = xDim/xDiff;
-    let ySize = yDim/yDiff;
+    let xSize = xDim / xDiff;
+    let ySize = yDim / yDiff;
     let offset = [-featureCentroid[0], -featureCentroid[1]];
-    for (let i = 0; i<feature.features.length; i++) {
+    for (let i = 0; i < feature.features.length; i++) {
         let coordsOffset = [];
-        for (let j=0; j<feature.features[i].geometry.coordinates[0].length; j++) {
+        for (let j = 0; j < feature.features[i].geometry.coordinates[0].length; j++) {
             let coords = feature.features[i].geometry.coordinates[0][j];
             let newCoords = [(coords[0] + offset[0]) * xSize, (coords[1] + offset[1]) * ySize];
             coordsOffset.push(newCoords);
@@ -93,7 +93,7 @@ const scaleFeatures= ( feature, size )=> {
     return feature;
 }
 
-const createFace = (line, extrusion )=>{
+const createFace = (line, extrusion) => {
     let start = line[0];
     let end = line[1];
     let triangle1 = stlFacet(start.concat(0), start.concat(extrusion), end.concat(extrusion));
@@ -102,7 +102,7 @@ const createFace = (line, extrusion )=>{
     return face;
 }
 
-const stlFacet= ( point1, point2, point3 )=>{
+const stlFacet = (point1, point2, point3) => {
     let loop = `facet normal 1.0 1.0 1.0 
         outer loop
             vertex ${point1[0]} ${point1[1]} ${point1[2]}
@@ -113,7 +113,7 @@ const stlFacet= ( point1, point2, point3 )=>{
     return loop;
 }
 
-const combineStl = ( name, facets )=>{
+const combineStl = (name, facets) => {
     let template = `solid ${name}\n${facets}`;
     return template;
 }
